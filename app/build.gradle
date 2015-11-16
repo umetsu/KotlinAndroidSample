@@ -18,6 +18,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
@@ -28,6 +31,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Data Binding
+    kapt 'com.android.databinding:compiler:1.0-rc5'
 }
 
 buildscript {
@@ -42,4 +48,8 @@ buildscript {
 
 repositories {
     mavenCentral()
+}
+
+kapt {
+    generateStubs = true
 }
