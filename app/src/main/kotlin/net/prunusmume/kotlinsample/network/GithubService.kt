@@ -1,5 +1,6 @@
-package net.prunusmume.kotlinsample
+package net.prunusmume.kotlinsample.network
 
+import net.prunusmume.kotlinsample.entity.Repo
 import retrofit.http.GET
 import retrofit.http.Path
 import rx.Observable

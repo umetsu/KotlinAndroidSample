@@ -1,6 +1,9 @@
 package net.prunusmume.kotlinsample
 
 import android.app.Application
+import net.prunusmume.kotlinsample.di.AppComponent
+import net.prunusmume.kotlinsample.di.AppModule
+import net.prunusmume.kotlinsample.di.DaggerAppComponent
 
 /**
  * Created by umetsu_kentaro on 15/11/18.

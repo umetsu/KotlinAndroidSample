@@ -1,4 +1,4 @@
-package net.prunusmume.kotlinsample
+package net.prunusmume.kotlinsample.entity
 
 /**
  * Created by umetsu_kentaro on 15/11/18.

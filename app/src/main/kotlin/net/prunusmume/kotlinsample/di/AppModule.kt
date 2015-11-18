@@ -1,4 +1,4 @@
-package net.prunusmume.kotlinsample
+package net.prunusmume.kotlinsample.di
 
 import android.app.Application
 import com.google.gson.FieldNamingPolicy
@@ -9,6 +9,8 @@ import javax.inject.Singleton
 
 import dagger.Module
 import dagger.Provides
+import net.prunusmume.kotlinsample.network.GithubService
+import net.prunusmume.kotlinsample.SampleApplication
 import retrofit.GsonConverterFactory
 import retrofit.Retrofit
 import retrofit.RxJavaCallAdapterFactory
