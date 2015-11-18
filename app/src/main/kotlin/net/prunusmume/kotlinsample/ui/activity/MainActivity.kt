@@ -8,7 +8,6 @@ import net.prunusmume.kotlinsample.R
 import net.prunusmume.kotlinsample.SampleApplication
 import net.prunusmume.kotlinsample.databinding.ActivityMainBinding
 import net.prunusmume.kotlinsample.network.GithubService
-import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import rx.subscriptions.Subscriptions
