@@ -4,9 +4,11 @@ import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
 import net.prunusmume.kotlinsample.R
 import net.prunusmume.kotlinsample.SampleApplication
 import net.prunusmume.kotlinsample.databinding.ActivityMainBinding
+import net.prunusmume.kotlinsample.entity.Repo
 import net.prunusmume.kotlinsample.network.GithubService
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -29,14 +31,15 @@ class MainActivity : AppCompatActivity() {
         SampleApplication.appComponent.inject(this)
 
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-        binding.textView.text = "Hello World!!"
+        val adapter = ArrayAdapter<Repo>(this, android.R.layout.simple_list_item_1)
+        binding.listView.adapter = adapter
 
         mSubscription = githubService.repositories("umetsu")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         { repositories ->
-                            repositories.forEach { Log.d(LOG_TAG, "${it.id}, ${it.name}") }
+                            adapter.addAll(repositories)
                         },
                         { error ->
                             Log.e(LOG_TAG, "error : $error")
