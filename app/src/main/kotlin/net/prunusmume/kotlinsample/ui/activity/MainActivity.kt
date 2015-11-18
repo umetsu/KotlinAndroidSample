@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var githubService: GithubService
 
+    private var mSubscription = Subscriptions.empty()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         SampleApplication.appComponent.inject(this)
@@ -30,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         binding.textView.text = "Hello World!!"
 
-        githubService.repositories("umetsu")
+        mSubscription = githubService.repositories("umetsu")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -40,5 +42,10 @@ class MainActivity : AppCompatActivity() {
                         { error ->
                             Log.e(LOG_TAG, "error : $error")
                         })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mSubscription.unsubscribe()
     }
 }
